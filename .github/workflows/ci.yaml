@@ -1,34 +1,33 @@
-# ---
-# name: CI
+---
+name: CI
 
-# on:
-#   push:
-#     branches: [advanced]
+on:
+  push:
+    branches: [advanced]
 
-# jobs:
+jobs:
   
-#   frontend:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       packages: read
-#       issues: write
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v7
-#         with:
-#           fetch-depth: 0
-#           persist-credentials: false
-#       - name: Super-linter
-#         uses: super-linter/super-linter@v8.7.0
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-#       - name: Install npm packages
-#         run: npm ci    
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+    
+      - name: Setup Nodejs
+        uses: actions/setup-node@v6
+        with:
+           node-version: '20'
+           cache: npm
+           cache-dependency-path: ./fronted/package-lock.json
+
+      - name: Install npm packages
+        run: npm ci   
+        
+      - name: Run Linter
+        run: npm run lint   
       
-#       - name: Install Tests
-#         run: npm run test
+      - name: Install Tests
+        run: npm run test
       # - name: 
       #   uses: actions/setup-node@v6
       #   with:
