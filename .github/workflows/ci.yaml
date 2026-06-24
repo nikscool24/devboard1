@@ -43,7 +43,7 @@ jobs:
         with:
           file: ./frontend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ github.repository }}/frontend:latest    
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/frontend:latest    
   
 
   # backend:
