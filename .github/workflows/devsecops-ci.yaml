@@ -1,7 +1,7 @@
 ---
 # Goal is the run end to end DevSecOps Pipeline
 
-name: DevSecOps.yaml
+name: DevSecOps
 
 on:
   push:
@@ -9,10 +9,10 @@ on:
 
 jobs:
   # Code Stage
-  code-quality:
+  Code-Quality:
     uses: ./.github/workflows/code-quality.yaml
   
   # Secret Scan
-  secret-scaning:
+  Secret-Scan:
     uses: ./.github/workflows/secret-scanning.yaml
     
