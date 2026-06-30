@@ -18,4 +18,4 @@ jobs:
     
 
   Dependency-Scanner:
-    uses: ./.github/workflows/dependency-scan.yaml   
+    uses: ./.github/workflows/dependency-scan.yaml
