@@ -8,7 +8,11 @@ on:
     branches: [main]
 
 jobs:
+  # Code Stage
   code-quality:
     uses: ./.github/workflows/code-quality.yaml
-    
+  
+  # Secret Scan
+  secret-scaning:
+    uses: ./.github/workflows/secret-scanning.yaml
     
