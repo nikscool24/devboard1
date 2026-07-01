@@ -51,4 +51,4 @@ jobs:
         with:
          name: dependency-scan-report
          path: reports/govulncheck-report.txt
-         retention-days: 5  
+         retention-days: 2
