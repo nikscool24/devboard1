@@ -9,7 +9,7 @@ RUN npm run build
 # Stage 2 — small image that only serves the build (no nginx)
 FROM dhi.io/node:22-alpine3.24
 WORKDIR /app
-RUN npm install -g vite@5 && npm cache clean --force
+RUN npm install npx vite && npm cache clean --force
 COPY --from=build /app/dist ./dist
 COPY vite.preview.config.js ./vite.config.js
 EXPOSE 4173
