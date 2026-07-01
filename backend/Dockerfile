@@ -1,5 +1,5 @@
 # Stage 1: build the Go binary
-FROM dhi.io/golang:1-alpine as builder
+FROM dhi.io/golang:1-alpine AS builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY . .
 RUN CGO_ENABLED=0 go build -o devboard-backend .
 
 # Stage 2: small runtime image
-FROM dhi.io/alpine:3.24
+FROM dhi.io/alpine-base:3.24
 
 WORKDIR /app
 
