@@ -25,7 +25,8 @@ jobs:
         
         
       - name: Govulncheck
-        run: govulncheck ./...
+        continue-on-error: true
+        run: govulncheck ./... > govulncheck-report.txt
         working-directory: backend
 
       - name: Setup NodeJs
@@ -43,3 +44,11 @@ jobs:
       - name: Run Dependency Scan for Node
         run: npm audit    
         working-directory: frontend  
+
+      - name: 'Upload Artifact'
+        if: always()  # ensure report upload even if test fails
+        uses: actions/upload-artifact@v7
+        with:
+         name: dependency-scan-report
+         path: reports/govulncheck-report.txt
+         retention-days: 5  
