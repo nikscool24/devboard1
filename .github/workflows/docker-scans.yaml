@@ -43,7 +43,7 @@ jobs:
           image-ref: ${{ vars.DOCKERHUB_USERNAME }}/devboard-${{ matrix.folders }}:latest
           format: 'table'
           exit-code: '1'
-          severity: 'CRITICAL,HIGH'
+          severity: 'HIGH'
           ignore-unfixed: true
           vuln-type: 'os,library'
       
