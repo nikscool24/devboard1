@@ -25,7 +25,7 @@ jobs:
       - name: ${{matrix.folders}}-Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ./${{matrix.folders}}
+          dockerfile: ./${{matrix.folders}}/Dockerfile
 
       - name: Super-linter for ${{matrix.folders}}
         uses: super-linter/super-linter@v8.7.0 # x-release-please-version
