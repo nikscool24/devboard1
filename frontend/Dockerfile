@@ -1,5 +1,5 @@
 # Stage 1 — build the app into static files
-FROM dhi.io/node:22-dev AS build
+FROM dhi.io/node:26-dev AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2 — small image that only serves the build (no nginx)
-FROM dhi.io/node:22-dev
+FROM dhi.io/node:26
 WORKDIR /app
 RUN npm install -g vite@5 && npm cache clean --force
 COPY --from=build /app/dist ./dist
