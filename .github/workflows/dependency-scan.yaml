@@ -38,7 +38,7 @@ jobs:
         
         
       - name: Install npm Packages
-        run: npm install 
+        run: npm install --legacy-peer-deps
         working-directory: frontend
         
       - name: Run Dependency Scan for Node
