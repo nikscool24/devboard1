@@ -1,0 +1,36 @@
+---
+# Goal- Ensure the docker files and docker images are security tested
+
+name: Docker-Scan
+
+on:
+  workflow_call:
+
+jobs:
+  dockerlint-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      # contents permission to clone the repository
+      contents: read
+      packages: read
+    strategy:
+        matrix:
+          folders: [backend, frontend]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: ${{matrix.folders}}-Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./${{matrix.folders}}
+
+      - name: Super-linter for ${{matrix.folders}}
+        uses: super-linter/super-linter@v8.7.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+           
